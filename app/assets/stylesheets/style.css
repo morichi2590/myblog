@@ -1,0 +1,15 @@
+.row{
+  width: 60%;
+}
+
+.success{
+  font-size:32px;
+}
+
+.field_text{
+  width: 100%;
+}
+
+.map{
+  float: right;
+}

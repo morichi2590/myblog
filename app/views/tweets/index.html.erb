@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample</title>
+  <style type="text/css" href="./style.css"></style>
+
+<!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/tweets" class="brand-logo"><i class="material-icons">cloud</i>MyBlog</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if user_signed_in? %>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <li><a href="/tweets/new">投稿</a></li>
+        <% else %>
+          <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+          <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+  </div>
+
+<div class="contents">
+  <% @tweets.each do |tweet| %>
+  <%= render partial:tweet %>
+  <% end %>
+  <%= paginate(@tweets) %>
+</div>
+
+
+
+<script type="text/javascript" src="./app.js"></script>
+</body>
+
+</html>
